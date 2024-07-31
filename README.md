@@ -1,2 +1,2 @@
 # voiceAssistant_vol1
-#learn file sources
+#its my first big project,do not judge strictly
