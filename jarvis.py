@@ -1,6 +1,5 @@
 from googlesearch import search  # поиск в Google
 from pyowm import OWM  # использование OpenWeatherMap для получения данных о погоде
-from dotenv import load_dotenv  # загрузка информации из .env-файла
 import speech_recognition  # распознавание пользовательской речи (Speech-To-Text)
 import pyttsx3  # синтез речи (Text-To-Speech)
 import wikipediaapi  # поиск определений в Wikipedia
@@ -10,7 +9,6 @@ import traceback  # вывод traceback без остановки работы 
 import json  # работа с json-файлами и json-строками
 import wave  # создание и чтение аудиофайлов формата wav
 import os  # работа с файловой системой
-import numpy as np
 
 
 
@@ -26,7 +24,7 @@ ttsEngine = pyttsx3.init()
 voices = ttsEngine.getProperty("voices")
 ttsEngine.setProperty("voice",voices[1].id)
 #что может джарвис(но не точно ха-ха)
-def record_and_recognize_audio(*args:tuple):
+def record_and_recognize_audio(microphone, recognizer):
     """
     Запись и распознавание аудио
     """
@@ -60,6 +58,7 @@ while True:
 def play_voice_assistant_speech(text_to_speech):
     ttsEngine.say(str(text_to_speech))
     ttsEngine.runAndWait()
+
 def play_greetings(*args: tuple):
 
     greetings = [
